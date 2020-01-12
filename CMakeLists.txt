@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.15)
+set(CMAKE_CXX_STANDARD 17)
 set( PROJECT_NAME sfml_tutorial)
 project(${PROJECT_NAME})
 set(SFML_DIR "${CMAKE_CURRENT_LIST_DIR}/libs/SFML-2.5.1/lib/cmake/SFML")
 
 file(GLOB REQUIRED_DLLS "libs/required_dll/*.dll")
 file(GLOB REQUIRED_SFML_DLL "libs/SFML-2.5.1/bin/*.dll")
-
+link_libraries(stdc++fs)
 file(COPY ${REQUIRED_DLLS} ${REQUIRED_SFML_DLL} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-set(CMAKE_CXX_STANDARD 17)
+
 
 file(GLOB_RECURSE SCRS_FILES "src/*.cpp" "src/*.hpp" "src/*.h" "src/*.c")
 
