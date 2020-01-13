@@ -4,6 +4,8 @@
 
 #include "iostream"
 #include "SFML/Graphics.hpp"
+#include "Player.h"
+#include "Target.h"
 #include <experimental/filesystem>
 
 class Game {
@@ -17,9 +19,13 @@ private:
     void update();
     void input();
     float velocity = 0.f;
+
+    bool hitdetection(sf::RectangleShape& rec1,sf::RectangleShape& rec2);
+
     bool game_running = true;
     unsigned int counter = 0;
     float box_speed = 7.f;
+    int highscore =0;
     sf::Vector2f getPlayerFootPosition();
     sf::Text text;
     sf::Font font;
@@ -27,9 +33,9 @@ private:
     float elapsedFrame,elapsedTick,elapsedInput;
     sf::RenderWindow& window;
     sf::RectangleShape ground;
-    sf::RectangleShape player;
     sf::Texture player_texture ,target_texture;
-    sf::RectangleShape target;
+    Player player;
+    Target target;
 };
 
 
