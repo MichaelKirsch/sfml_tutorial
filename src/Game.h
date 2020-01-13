@@ -37,7 +37,7 @@ private:
     sf::Texture player_texture ,target_texture;
     Player player;
     Target target;
-    ParticleEmitter p_emitter, mouse_emit;
+    ParticleEmitter p_emitter, mouse_emit, background_part;
     sf::Mouse mouse;
 };
 

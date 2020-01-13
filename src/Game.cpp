@@ -28,7 +28,9 @@ void Game::run(int framerate, int tickrate, int inputrate) {
 }
 
 void Game::render() {
-    this->window.clear({3, 252, 248});
+    //this->window.clear({3, 252, 248});
+    this->window.clear();
+    this->window.draw(background_part.getVAO());
     this->window.draw(ground);
     this->window.draw(player);
     this->window.draw(target);
@@ -43,12 +45,12 @@ void Game::update() {
     if(game_running)
     {
         p_emitter.update();
+        background_part.update();
         mouse_emit.update();
         player.update();
         target.update();
         p_emitter.setPos({target.getPosition().x+target.getSize().x,target.getPosition().y+target.getSize().y/2.f});
         mouse_emit.setPos({player.getPosition().x+player.getSize().x/2.f,player.getPosition().y});
-        mouse_emit.setColor(sf::Color{static_cast<sf::Uint8>(rand()%255),static_cast<sf::Uint8>(rand()%255),static_cast<sf::Uint8>(rand()%255)});
         if(hitdetection(player,target))
             game_running= false;
         else
@@ -102,10 +104,14 @@ Game::Game(sf::RenderWindow &rw) : window(rw){
             {static_cast<float>(window.getSize().x),ground.getPosition().y},&target_texture);
     player.create(ground.getPosition(),0.f,13.f,0.5,{window.getSize().x*0.1f,window.getSize().y*0.1f},
             {window.getSize().x*0.2f,window.getSize().y*0.5f},&player_texture);
-    p_emitter.init(500,10.f,{
+    p_emitter.init(5000,1.f,{
             237, 76, 76
     },{1,1},target.getPosition(),10.f,5.f,0.3,-0.3,0.3,-0.3,0.5f,1.5f);
-    mouse_emit.init(50,8.f,{92, 92, 92},{1,1},{player.getPosition().x+player.getSize().x/2.f,player.getPosition().y},10.f,5.f,0.5,-0.5,1.0,0.99,0.5f,1.5f);
+    mouse_emit.init(50,3.f,{232, 237, 76},{1,0},{player.getPosition().x+player.getSize().x/2.f,player.getPosition().y},10.f,-10.f,1,-1,1.0,-0.99,0.5f,1.5f);
+    background_part.init(20,4.f,{
+            76, 173, 237
+    },{1,1},{player.getPosition().x+player.getSize().x/2.f,player.getPosition().y},10.f,-10.f,0.1,-0.1,-.8f,-0.99,1.f,3.f);
+    background_part.setPos({window.getSize().x*0.75f,window.getSize().y/2.f});
 }
 
 bool Game::hitdetection(sf::RectangleShape &rec1, sf::RectangleShape &rec2) {
