@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Target.h"
 #include <experimental/filesystem>
+#include "ParticleEmitter.h"
 
 class Game {
 public:
@@ -36,6 +37,8 @@ private:
     sf::Texture player_texture ,target_texture;
     Player player;
     Target target;
+    ParticleEmitter p_emitter, mouse_emit;
+    sf::Mouse mouse;
 };
 
 
