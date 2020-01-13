@@ -1,1 +1,1 @@
-[![IMAGE ALT TEXT](http://img.https://youtube.com/watch?v=AW2_fAFO4H8/0.jpg)](http://www.youtube.com/watch?v=AW2_fAFO4H8 "SFML C++ Game")
+[![Click Here for the Video](http://img.https://youtube.com/watch?v=AW2_fAFO4H8/0.jpg)](http://www.youtube.com/watch?v=AW2_fAFO4H8 "SFML C++ Game")
